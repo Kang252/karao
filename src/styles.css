@@ -13,3 +13,20 @@
 /* Friendly, familiar typeface across the entire interface. */
 :root{font-family:Arial,Helvetica,sans-serif}
 .logo strong,.logo small,.hero h1,.loot-card strong,.section-title h2,.rec-list>article>b,.drawer-head h2,.drawer-head h2 b,.queue-list article>b,.drawer-empty h3,.modal-head h2{font-family:Arial,Helvetica,sans-serif}
+
+/* Chest motion and result controls */
+.chest-scene:not(.opening):not(.revealed) img{animation:chestIdle 3.2s ease-in-out infinite;transform-origin:50% 80%}
+.chest-scene:not(.opening):not(.revealed) .chest-glow{animation:idleGlow 2.4s ease-in-out infinite}
+.chest-scene.opening img{animation:chestOpen 1.55s cubic-bezier(.36,.07,.19,.97)}
+.chest-scene.opening .rune{animation:runeBurst 1.35s ease-out}
+.loot-card{padding-top:24px;width:285px}
+.loot-close{position:absolute;right:8px;top:8px!important;margin:0!important;width:30px;height:30px;padding:0!important;border:1px solid #ffffff24!important;border-radius:50%!important;background:#080b0caa!important;color:#b9c2c0!important;display:grid!important;place-items:center!important}
+.loot-close svg{width:15px}
+.loot-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.loot-actions button{margin:0!important;min-height:38px;justify-content:center}
+.loot-actions .loot-remove{background:#38191c;color:#ff9b9f;border:1px solid #843b40}
+@keyframes chestIdle{0%,100%{transform:translateY(8px) rotate(-.6deg)}50%{transform:translateY(-7px) rotate(.6deg);filter:drop-shadow(0 38px 34px #000b) drop-shadow(0 0 32px color-mix(in srgb,var(--loot),transparent 55%))}}
+@keyframes idleGlow{0%,100%{opacity:.48;transform:scale(.92)}50%{opacity:.9;transform:scale(1.12)}}
+@keyframes chestOpen{0%{transform:translateY(8px) scale(1)}12%,36%,60%{transform:translateX(-12px) rotate(-2deg)}24%,48%,72%{transform:translateX(12px) rotate(2deg)}82%{transform:translateY(-26px) scale(1.08);filter:drop-shadow(0 0 65px var(--loot)) brightness(1.35)}100%{transform:translateY(8px) scale(1)}}
+@keyframes runeBurst{0%{opacity:.2;transform:scale(.5) rotate(0)}45%{opacity:1;transform:scale(1.6) rotate(120deg)}100%{opacity:.25;transform:scale(.8) rotate(220deg)}}
+@media(max-width:480px){.loot-card{width:min(270px,88vw)}.loot-actions{grid-template-columns:1fr}}
