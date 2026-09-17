@@ -11,8 +11,8 @@
 @media(max-width:760px){.filter-row{display:block}.levels{margin:0 0 15px}.difficulty-legend{flex-wrap:wrap}.difficulty-legend em{width:100%;margin:2px 0 0}.live-state{font-size:0}.live-state svg{width:18px}.form-grid{grid-template-columns:1fr}}
 
 /* Friendly, familiar typeface across the entire interface. */
-:root{font-family:Arial,Helvetica,sans-serif}
-.logo strong,.logo small,.hero h1,.loot-card strong,.section-title h2,.rec-list>article>b,.drawer-head h2,.drawer-head h2 b,.queue-list article>b,.drawer-empty h3,.modal-head h2{font-family:Arial,Helvetica,sans-serif}
+:root{font-family:Inter,Arial,Helvetica,sans-serif}
+.logo strong,.logo small,.hero h1,.loot-card strong,.section-title h2,.rec-list>article>b,.drawer-head h2,.drawer-head h2 b,.queue-list article>b,.drawer-empty h3,.modal-head h2{font-family:Inter,Arial,Helvetica,sans-serif}
 
 /* Chest motion and result controls */
 .chest-scene:not(.opening):not(.revealed) img{animation:chestIdle 3.2s ease-in-out infinite;transform-origin:50% 80%}
@@ -50,3 +50,20 @@
 @keyframes chestUnlock{0%{transform:translateY(8px) scale(1)}12%,32%,52%{transform:translateX(-14px) rotate(-2.2deg)}22%,42%,62%{transform:translateX(14px) rotate(2.2deg)}76%{transform:translateY(-31px) scale(1.1)}100%{transform:translateY(0) scale(1)}}
 @keyframes lidOpen{0%,58%{transform:perspective(700px) translateY(0) rotateX(0)}76%{transform:perspective(700px) translateY(-23%) rotateX(-82deg)}88%{transform:perspective(700px) translateY(-17%) rotateX(-60deg)}100%{transform:perspective(700px) translateY(-19%) rotateX(-68deg)}}
 @keyframes insideFlash{0%,55%{opacity:0;transform:scale(.45)}76%{opacity:1;transform:scale(1.5)}100%{opacity:.9;transform:scale(1.12)}}
+
+/* Stable one-piece chest for sub-path hosting */
+html,body,#root{overflow-x:hidden}
+.chest-scene .chest-figure .chest-image{position:relative;inset:auto;width:100%;height:100%;object-fit:contain;clip-path:none;transform:none;opacity:1;animation:none;z-index:2}
+.chest-open-light{position:absolute;z-index:3;left:13%;right:13%;top:27%;height:30%;border-radius:50%;opacity:0;pointer-events:none;background:radial-gradient(ellipse,#fff 0,color-mix(in srgb,var(--loot),#fff 24%) 16%,var(--loot) 42%,transparent 74%);filter:blur(12px);transform:scale(.35)}
+.chest-scene.opening .chest-open-light{animation:openLight 1.55s ease-out both}
+.chest-scene.revealed .chest-open-light{opacity:.42;transform:scale(.88)}
+@keyframes openLight{0%,48%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.45)}100%{opacity:.42;transform:scale(.88)}}
+
+/* Local profile and favourites */
+.account-pill{height:41px;border:1px solid #334143!important;border-radius:6px!important;background:#111718!important;display:flex;align-items:center;gap:7px;padding:0 12px!important;color:#c4cecc;font-size:11px;max-width:160px}
+.account-pill svg{width:16px}.account-pill span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.account-card{width:min(520px,100%);background:#111617;border:1px solid #435052;border-radius:9px;padding:27px}
+.profile-summary{display:flex;align-items:center;gap:14px;margin:24px 0 16px;padding:16px;border:1px solid #2e393a;border-radius:8px;background:#0c1112}
+.profile-summary>span{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;color:#edbc64;background:#2c2112}.profile-summary svg{width:22px}.profile-summary strong,.profile-summary small{display:block}.profile-summary strong{font-size:14px}.profile-summary small{margin-top:5px;color:#7d8987;font-size:12px}
+.account-note{color:#899391;font-size:13px;line-height:1.6;margin:17px 0}.logout-button{width:100%}
+@media(max-width:760px){.account-pill span{display:none}.account-pill{width:41px;padding:0!important;justify-content:center}}
