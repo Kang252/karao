@@ -67,3 +67,9 @@ html,body,#root{overflow-x:hidden}
 .profile-summary>span{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;color:#edbc64;background:#2c2112}.profile-summary svg{width:22px}.profile-summary strong,.profile-summary small{display:block}.profile-summary strong{font-size:14px}.profile-summary small{margin-top:5px;color:#7d8987;font-size:12px}
 .account-note{color:#899391;font-size:13px;line-height:1.6;margin:17px 0}.logout-button{width:100%}
 @media(max-width:760px){.account-pill span{display:none}.account-pill{width:41px;padding:0!important;justify-content:center}}
+
+/* Motion sequence: still while waiting, shake for .5s, then reveal. */
+.chest-scene:not(.opening):not(.revealed) .chest-figure{animation:none;transform:translateY(8px)}
+.chest-scene:not(.opening):not(.revealed) .chest-glow{animation:none;opacity:.55;transform:scale(1)}
+@keyframes chestUnlock{0%{transform:translateY(8px)}5%,15%,25%{transform:translate(-13px,8px) rotate(-1.8deg)}10%,20%,30%{transform:translate(13px,8px) rotate(1.8deg)}32%{transform:translateY(8px) rotate(0)}62%{transform:translateY(-24px) scale(1.08)}100%{transform:translateY(0) scale(1)}}
+@keyframes openLight{0%,32%{opacity:0;transform:scale(.3)}58%{opacity:1;transform:scale(1.45)}100%{opacity:.42;transform:scale(.88)}}
