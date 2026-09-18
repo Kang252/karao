@@ -17,7 +17,7 @@ export default async function handler(request, response) {
     country: 'vn',
     media: 'music',
     entity: 'song',
-    limit: '25',
+    limit: '50',
     explicit: 'No',
   });
   const controller = new AbortController();
